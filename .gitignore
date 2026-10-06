@@ -1,0 +1,23 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+*.sqlite3
+.venv/
+.env
+.env.*
+!.env.example
+
+# Frontend
+node_modules/
+dist/
+.vite/
+*.local
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# LibreOffice temporary files
+.~lock.*#
