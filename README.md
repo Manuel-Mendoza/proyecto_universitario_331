@@ -1,53 +1,65 @@
 # Proyecto universitario 331
 
-Monorepo para el proyecto universitario.
+Repositorio del proyecto universitario. La aplicación completa utiliza **Django**, tanto para la lógica del servidor como para la interfaz web mediante plantillas HTML y archivos estáticos CSS y JavaScript.
 
-## Stack
+## Tecnologías
 
-- **Backend:** Django 5.2, gestionado con [uv](https://docs.astral.sh/uv/).
-- **Frontend:** React + Vite + TypeScript, gestionado con [Bun](https://bun.sh/).
-- **Informe:** documento editable en formato `.odt`, ubicado en `doc/`.
+- Django 5.2 y Python 3.13 o superior.
+- [uv](https://docs.astral.sh/uv/) para gestionar dependencias y el entorno virtual.
+- SQLite para desarrollo local.
+- Informe editable en `doc/informe.odt`.
 
-## Requisitos
-
-- Python 3.13 o superior
-- uv
-- Bun
+No se necesitan React, Vite, Bun ni Node.js.
 
 ## Desarrollo
 
-### Backend
+Instala uv y ejecuta:
 
 ```bash
 cd backend
+uv sync --locked
 uv run manage.py migrate
 uv run manage.py runserver
 ```
 
-El backend estará disponible en http://127.0.0.1:8000/.
+La aplicación estará disponible en http://127.0.0.1:8000/.
+Un único servidor ejecuta tanto la interfaz como la lógica de la aplicación.
 
-### Frontend
-
-En otra terminal:
-
-```bash
-cd frontend
-bun install
-bun run dev
-```
-
-El frontend estará disponible en la dirección que indique Vite, normalmente http://localhost:5173/.
-
-Para comprobar el build de producción:
-
-```bash
-bun run build
-```
+La configuración inicial es exclusivamente para desarrollo. Las variables de
+`backend/.env.example` documentan las opciones disponibles; Django las lee del
+entorno del proceso, no carga automáticamente un archivo `.env`.
 
 ## Estructura
 
 ```text
-backend/   Proyecto Django y dependencias Python
-frontend/  Aplicación React + Vite y dependencias Bun
-doc/       Informe del proyecto en formato ODT
+backend/
+├── config/          # Configuración, rutas y pruebas de Django
+├── templates/       # Plantillas HTML: base compartida y páginas
+├── static/          # CSS y futuros archivos JavaScript e imágenes
+├── manage.py
+├── pyproject.toml
+└── uv.lock
+doc/
+└── informe.odt      # Informe del proyecto
+```
+
+Las nuevas páginas pueden extender `backend/templates/base.html`.
+La página de inicio utiliza `backend/templates/home.html` y sus estilos se
+encuentran en `backend/static/css/main.css`.
+
+Se conserva `/api/health/` como comprobación del servicio y `/admin/` como
+panel administrativo de Django. Para crear un administrador:
+
+```bash
+cd backend
+uv run manage.py createsuperuser
+```
+
+## Comprobaciones
+
+Desde `backend/`:
+
+```bash
+uv run manage.py check
+uv run manage.py test
 ```

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <section class="hero">
+    <p class="eyebrow">UN ESPACIO PARA APRENDER Y CONSTRUIR</p>
+    <h1>Construimos ideas<br><em>con propósito.</em></h1>
+    <p class="intro">Desarrollamos, documentamos y presentamos nuestro proyecto universitario desde un solo lugar.</p>
+    <a class="button" href="#proyecto">Explorar el proyecto →</a>
+  </section>
+  <section id="proyecto" aria-labelledby="project-title">
+    <h2 id="project-title">Una base para crecer</h2>
+    <div class="cards">
+      <article class="card"><p class="eyebrow">APLICACIÓN</p><h3>Django + uv</h3><p>La lógica del proyecto y sus páginas web en una sola aplicación.</p></article>
+      <article class="card highlighted"><p class="eyebrow">INTERFAZ</p><h3>Plantillas Django</h3><p>HTML y CSS para una interfaz sencilla, sin herramientas de compilación adicionales.</p></article>
+      <article class="card"><p class="eyebrow">DOCUMENTACIÓN</p><h3>Informe .odt</h3><p>El informe del proyecto se desarrolla en el documento editable de la carpeta /doc.</p></article>
+    </div>
+  </section>
+{% endblock %}

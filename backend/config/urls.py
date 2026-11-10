@@ -17,12 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.http import JsonResponse
 from django.urls import path
+from django.views.generic import TemplateView
 
 
 def health_check(request):
     return JsonResponse({'status': 'ok', 'service': 'backend'})
 
 urlpatterns = [
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('api/health/', health_check, name='health-check'),
     path('admin/', admin.site.urls),
 ]
