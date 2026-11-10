@@ -16,7 +16,7 @@ No se necesitan React, Vite, Bun ni Node.js.
 Instala uv y ejecuta:
 
 ```bash
-cd backend
+cd app
 uv sync --locked
 uv run manage.py migrate
 uv run manage.py runserver
@@ -26,13 +26,13 @@ La aplicación estará disponible en http://127.0.0.1:8000/.
 Un único servidor ejecuta tanto la interfaz como la lógica de la aplicación.
 
 La configuración inicial es exclusivamente para desarrollo. Las variables de
-`backend/.env.example` documentan las opciones disponibles; Django las lee del
+`app/.env.example` documentan las opciones disponibles; Django las lee del
 entorno del proceso, no carga automáticamente un archivo `.env`.
 
 ## Estructura
 
 ```text
-backend/
+app/
 ├── config/          # Configuración, rutas y pruebas de Django
 ├── templates/       # Plantillas HTML: base compartida y páginas
 ├── static/          # CSS y futuros archivos JavaScript e imágenes
@@ -43,21 +43,21 @@ doc/
 └── informe.odt      # Informe del proyecto
 ```
 
-Las nuevas páginas pueden extender `backend/templates/base.html`.
-La página de inicio utiliza `backend/templates/home.html` y sus estilos se
-encuentran en `backend/static/css/main.css`.
+Las nuevas páginas pueden extender `app/templates/base.html`.
+La página de inicio utiliza `app/templates/home.html` y sus estilos se
+encuentran en `app/static/css/main.css`.
 
 Se conserva `/api/health/` como comprobación del servicio y `/admin/` como
 panel administrativo de Django. Para crear un administrador:
 
 ```bash
-cd backend
+cd app
 uv run manage.py createsuperuser
 ```
 
 ## Comprobaciones
 
-Desde `backend/`:
+Desde `app/`:
 
 ```bash
 uv run manage.py check
