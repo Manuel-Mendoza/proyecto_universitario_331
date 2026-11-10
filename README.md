@@ -34,7 +34,7 @@ entorno del proceso, no carga automáticamente un archivo `.env`.
 ```text
 app/
 ├── config/          # Configuración, rutas y pruebas de Django
-├── templates/       # Plantillas HTML: base compartida y páginas
+├── templates/       # Dashboard principal de Star Admin
 ├── static/          # CSS y futuros archivos JavaScript e imágenes
 ├── manage.py
 ├── pyproject.toml
@@ -43,9 +43,12 @@ doc/
 └── informe.odt      # Informe del proyecto
 ```
 
-Las nuevas páginas pueden extender `app/templates/base.html`.
-La página de inicio utiliza `app/templates/home.html` y sus estilos se
-encuentran en `app/static/css/main.css`.
+La página de inicio utiliza `app/templates/home.html`, adaptada del dashboard
+principal de **Star Admin 2 Free (BootstrapDash)**. Sus recursos compilados se
+encuentran en `app/static/staradmin/`, con las fuentes e imágenes utilizadas
+por sus estilos. No se requiere instalar dependencias de JavaScript ni compilar.
+Se conservan los gráficos y datos de demostración; no están conectados a modelos.
+No se incluyen las demás páginas de ejemplo del template.
 
 Se conserva `/api/health/` como comprobación del servicio y `/admin/` como
 panel administrativo de Django. Para crear un administrador:
