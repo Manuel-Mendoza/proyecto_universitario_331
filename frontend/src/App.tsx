@@ -11,7 +11,7 @@ function App() {
 
       <section className="hero">
         <p className="eyebrow">PLATAFORMA UNIVERSITARIA · 2026</p>
-        <h1>Construimos ideas<br /><em>con propósito.</em></h1>
+        <h1>Desarrollamos ideas<br /><em>con propósito.</em></h1>
         <p className="intro">
           Un espacio para desarrollar, documentar y presentar nuestro proyecto
           universitario desde un solo lugar.
