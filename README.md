@@ -34,7 +34,7 @@ entorno del proceso, no carga automáticamente un archivo `.env`.
 ```text
 app/
 ├── config/          # Configuración, rutas y pruebas de Django
-├── templates/       # Dashboard principal de Star Admin
+├── templates/       # Dashboard y pantalla de login de Star Admin
 ├── static/          # CSS y futuros archivos JavaScript e imágenes
 ├── manage.py
 ├── pyproject.toml
@@ -48,7 +48,21 @@ principal de **Star Admin 2 Free (BootstrapDash)**. Sus recursos compilados se
 encuentran en `app/static/staradmin/`, con las fuentes e imágenes utilizadas
 por sus estilos. No se requiere instalar dependencias de JavaScript ni compilar.
 Se conservan los gráficos y datos de demostración; no están conectados a modelos.
-No se incluyen las demás páginas de ejemplo del template.
+La identidad visual de **Inversiones Mundo Agropecuario CAM** se aplica al
+dashboard y al login mediante `app/static/css/branding.css`, cargado después
+de los estilos de Star Admin sin modificar los archivos del proveedor. La
+paleta compartida utiliza verde `#73BF36`, verde oscuro `#3B7324` (para mejorar
+el contraste con blanco), marrón carbón `#3E3733` y blanco `#FFFFFF`.
+El logo original está en `app/static/branding/logo CAM.jpg.jpeg`; se conserva
+su formato JPEG y su proporción. Los colores de estado y los gráficos de
+demostración mantienen sus distinciones originales.
+
+También se incluye la pantalla de inicio de sesión en `/login/`, adaptada al
+español en `app/templates/login.html` y con los mismos recursos locales de Star
+Admin. Por ahora es únicamente una vista: no valida credenciales ni crea
+sesiones y el botón de ingreso está deshabilitado. El dashboard sigue siendo
+público en `/`. No se incluyen registro, recuperación de contraseña, acceso con
+redes sociales ni las demás páginas de ejemplo del template.
 
 Se conserva `/api/health/` como comprobación del servicio y `/admin/` como
 panel administrativo de Django. Para crear un administrador:

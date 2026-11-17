@@ -1,0 +1,144 @@
+/* Identidad compartida de Inversiones Mundo Agropecuario CAM.
+   Cargar después de los estilos originales de Star Admin. */
+:root {
+  --cam-green: #73bf36;
+  --cam-green-dark: #3b7324;
+  --cam-green-hover: #305e1d;
+  --cam-charcoal: #3e3733;
+  --cam-white: #ffffff;
+  --cam-background: #f5f7f2;
+  --cam-green-soft: #eaf3e3;
+  --bs-primary: var(--cam-green-dark);
+  --bs-primary-rgb: 59, 115, 36;
+  --bs-link-color: var(--cam-green-dark);
+  --bs-link-hover-color: var(--cam-green-hover);
+  --bs-body-color: var(--cam-charcoal);
+}
+
+body {
+  color: var(--cam-charcoal);
+}
+
+a {
+  color: var(--cam-green-dark);
+}
+
+a:hover {
+  color: var(--cam-green-hover);
+}
+
+.content-wrapper,
+.sidebar,
+.navbar .navbar-brand-wrapper,
+.navbar .navbar-menu-wrapper,
+.footer {
+  background: var(--cam-background);
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--cam-green-dark);
+  --bs-btn-border-color: var(--cam-green-dark);
+  --bs-btn-hover-bg: var(--cam-green-hover);
+  --bs-btn-hover-border-color: var(--cam-green-hover);
+  --bs-btn-active-bg: var(--cam-green-hover);
+  --bs-btn-active-border-color: var(--cam-green-hover);
+  --bs-btn-disabled-bg: var(--cam-green-dark);
+  --bs-btn-disabled-border-color: var(--cam-green-dark);
+  --bs-btn-focus-shadow-rgb: 59, 115, 36;
+  background-color: var(--cam-green-dark);
+  border-color: var(--cam-green-dark);
+  color: var(--cam-white);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--cam-green-hover);
+  border-color: var(--cam-green-hover);
+  color: var(--cam-white);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--cam-green-dark);
+  --bs-btn-border-color: var(--cam-green-dark);
+  --bs-btn-hover-bg: var(--cam-green-dark);
+  --bs-btn-hover-border-color: var(--cam-green-dark);
+  --bs-btn-active-bg: var(--cam-green-hover);
+  --bs-btn-active-border-color: var(--cam-green-hover);
+  color: var(--cam-green-dark);
+  border-color: var(--cam-green-dark);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+  background: var(--cam-green-dark);
+  color: var(--cam-white);
+}
+
+.text-primary {
+  color: var(--cam-green-dark) !important;
+}
+
+.bg-primary,
+.badge-primary {
+  background-color: var(--cam-green-dark) !important;
+  color: var(--cam-white);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--cam-green-dark);
+  box-shadow: 0 0 0 0.2rem rgb(59 115 36 / 20%);
+}
+
+.sidebar .nav .nav-item.active > .nav-link,
+.sidebar .nav .nav-item > .nav-link:hover {
+  background: var(--cam-green-soft);
+  color: var(--cam-green-dark);
+}
+
+.sidebar .nav .nav-item.active > .nav-link i,
+.sidebar .nav .nav-item.active > .nav-link .menu-title,
+.sidebar .nav .nav-item.active > .nav-link .menu-arrow,
+.sidebar .nav.sub-menu .nav-item .nav-link.active,
+.home-tab .nav-tabs .nav-item .nav-link.active {
+  color: var(--cam-green-dark);
+}
+
+.home-tab .nav-tabs .nav-item .nav-link.active {
+  border-bottom-color: var(--cam-green-dark);
+}
+
+.navbar .navbar-brand-wrapper .navbar-brand img {
+  width: auto;
+  height: 72px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.navbar .navbar-brand-wrapper .brand-logo-mini img {
+  width: 44px;
+  height: auto;
+}
+
+.auth .brand-logo {
+  text-align: center;
+}
+
+.auth .brand-logo img {
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+}
+
+.auth .auth-form-light {
+  background: var(--cam-white);
+  border-top: 4px solid var(--cam-green);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgb(62 55 51 / 8%);
+}
+
+:focus-visible {
+  outline: 2px solid var(--cam-green-dark);
+  outline-offset: 3px;
+}

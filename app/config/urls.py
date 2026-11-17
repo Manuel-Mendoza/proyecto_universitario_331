@@ -26,6 +26,7 @@ def health_check(request):
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('login/', TemplateView.as_view(template_name='login.html'), name='login'),
     path('api/health/', health_check, name='health-check'),
     path('admin/', admin.site.urls),
 ]
