@@ -1,0 +1,6 @@
+<article class="card h-100 cam-summary-card">
+  <div class="card-body">
+    <h3 class="h6">{{ title }}</h3>
+    <p class="cam-indicator-status"{% if value_label %} aria-label="{{ value_label }}"{% endif %}>{{ value }}</p>
+  </div>
+</article>

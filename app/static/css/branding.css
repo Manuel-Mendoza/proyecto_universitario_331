@@ -234,6 +234,44 @@ a:hover {
   min-height: 46px;
 }
 
+.cam-summary-card {
+  border-top: 3px solid var(--cam-green);
+}
+
+.cam-indicator-status {
+  color: var(--cam-green-dark);
+  font-weight: 700;
+  margin: 16px 0;
+}
+
+.cam-alert-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cam-alert-list li {
+  padding: 16px;
+  border: 1px solid #e1e7dc;
+  border-radius: 8px;
+}
+
+.cam-alert-list span {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.875rem;
+}
+
+.cam-app .table .cam-empty-state {
+  padding: 32px 16px;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.6;
+}
+
 @media (max-width: 767px) {
   .cam-layout {
     flex-direction: column;

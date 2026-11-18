@@ -25,9 +25,9 @@ def health_check(request):
     return JsonResponse({'status': 'ok', 'service': 'backend'})
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
-    path('login/', TemplateView.as_view(template_name='login.html'), name='login'),
-    path('mascotas/registrar/', TemplateView.as_view(template_name='pet_register.html'), name='pet-register'),
+    path('', TemplateView.as_view(template_name='dashboard/home.html'), name='home'),
+    path('login/', TemplateView.as_view(template_name='accounts/login.html'), name='login'),
+    path('mascotas/registrar/', TemplateView.as_view(template_name='pets/register.html'), name='pet-register'),
     path('api/health/', health_check, name='health-check'),
     path('admin/', admin.site.urls),
 ]

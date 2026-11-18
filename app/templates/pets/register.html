@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'layouts/app.html' %}
 {% block title %}Registrar mascota{% endblock %}
 {% block content %}
   <p class="text-primary fw-semibold mb-2">MASCOTAS</p>
@@ -7,18 +7,13 @@
   <section class="card">
     <div class="card-body">
       <h2 class="h4 mb-3">Datos de la mascota</h2>
-      <p id="pet-notice" class="cam-notice">Formulario de demostración: los datos no se guardan. Las opciones de cliente, especie y raza son de ejemplo.</p>
-      <form method="post" onsubmit="return false;" aria-describedby="pet-notice">
+      <form method="post" onsubmit="return false;">
         <div class="row g-4">
-          <div class="col-md-6">
-            <label for="id_animal" class="form-label">Identificador del animal</label>
-            <input id="id_animal" class="form-control" type="text" placeholder="Se asignará automáticamente" disabled />
-          </div>
+         
           <div class="col-md-6">
             <label for="id_clientes" class="form-label">Cliente / propietario</label>
             <select id="id_clientes" name="id_clientes" class="form-select">
               <option value="">Selecciona un cliente</option>
-              <option value="demo-cliente">Cliente de ejemplo (demostración)</option>
             </select>
           </div>
           <div class="col-12">
@@ -29,18 +24,17 @@
             <label for="id_especie" class="form-label">Especie</label>
             <select id="id_especie" name="id_especie" class="form-select">
               <option value="">Selecciona una especie</option>
-              <option value="demo-canino">Canino (ejemplo)</option>
-              <option value="demo-felino">Felino (ejemplo)</option>
-              <option value="demo-otro">Otra (ejemplo)</option>
+              <option value="demo-canino">Canino</option>
+              <option value="demo-felino">Felino</option>
+              <option value="demo-otro">Otra</option>
             </select>
           </div>
           <div class="col-md-6">
             <label for="id_raza" class="form-label">Raza</label>
-            <select id="id_raza" name="id_raza" class="form-select" aria-describedby="breed-help">
+            <select id="id_raza" name="id_raza" class="form-select">
               <option value="">Selecciona una raza</option>
-              <option value="demo-mestizo">Mestizo / sin raza definida (ejemplo)</option>
+              <option value="demo-mestizo">Mestizo / sin raza definida</option>
             </select>
-            <p id="breed-help" class="text-muted small mt-2 mb-0">El catálogo de razas se conectará más adelante.</p>
           </div>
           <div class="col-md-6">
             <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento</label>

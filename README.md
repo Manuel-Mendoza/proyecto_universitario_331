@@ -48,7 +48,13 @@ Sus recursos compilados se
 encuentran en `app/static/staradmin/`, con las fuentes e imágenes utilizadas
 por sus estilos. No se requiere instalar dependencias de JavaScript ni compilar.
 El dashboard se ha simplificado sin gráficos ni estadísticas ficticias.
-Comparte la navegación con el registro de mascotas mediante `app/templates/base.html`.
+Incluye un resumen de mascotas, ventas del día, stock bajo y medicamentos
+próximos a vencer; alertas de inventario; una tabla vacía de últimas mascotas
+y un acceso al formulario de registro. Los indicadores sin información se
+representan con «—» y las tablas muestran un estado vacío, sin cifras ficticias.
+Los vencimientos se plantean por lote. No se manejan citas ni agenda y no
+se agregan vistas de ventas o inventario en esta etapa.
+Comparte la navegación con el registro de mascotas mediante `app/templates/layouts/app.html`.
 La identidad visual de **Inversiones Mundo Agropecuario CAM** se aplica al
 dashboard, al login y al registro mediante `app/static/css/branding.css`, cargado después
 de los estilos de Star Admin sin modificar los archivos del proveedor. La
@@ -58,18 +64,52 @@ El logo original está en `app/static/branding/logo CAM.jpg.jpeg`; se conserva
 su formato JPEG y su proporción. Los colores de estado mantienen sus distinciones originales.
 
 También se incluye la pantalla de inicio de sesión en `/login/`, adaptada al
-español en `app/templates/login.html` y con los mismos recursos locales de Star
+español en `app/templates/accounts/login.html` y con los mismos recursos locales de Star
 Admin. Por ahora es únicamente una vista: no valida credenciales ni crea
 sesiones y el botón de ingreso está deshabilitado. El dashboard sigue siendo
 público en `/`. No se incluyen registro de usuarios, recuperación de contraseña, acceso con
 redes sociales ni las demás páginas de ejemplo del template.
 
-La tercera vista es `/mascotas/registrar/` (`app/templates/pet_register.html`).
-Incluye los campos de Animal: identificador automático no editable, cliente,
+La tercera vista es `/mascotas/registrar/` (`app/templates/pets/register.html`).
+Incluye los campos editables de Animal: cliente,
 especie, raza, nombre, fecha de nacimiento, sexo, peso inicial en kg, color y
-observaciones. Los catálogos son ejemplos y el botón de guardar está deshabilitado:
+observaciones. Especie y raza contienen opciones ilustrativas; el selector de
+cliente está vacío y el botón de guardar está deshabilitado:
 no se crean modelos, registros ni sesiones. Se pueden editar y limpiar los campos
 para revisar la interfaz. Las tres pantallas están enlazadas entre sí.
+
+### Plantillas reutilizables
+
+```text
+app/templates/
+├── base.html                 # Documento HTML, estilos y favicon comunes
+├── layouts/
+│   ├── app.html              # Estructura del dashboard y formularios
+│   └── auth.html             # Estructura de acceso, sin menú lateral
+├── components/
+│   ├── brand.html            # Logo compartido
+│   ├── sidebar.html          # Navegación y enlace activo
+│   ├── header.html
+│   ├── footer.html
+│   └── stat_card.html        # Tarjeta de indicador
+├── accounts/login.html
+├── dashboard/home.html
+└── pets/register.html
+```
+
+Las páginas heredan un layout con `{% extends %}` y definen su título y
+contenido con bloques. Los fragmentos se insertan con `{% include %}` y `only`
+para recibir únicamente sus parámetros explícitos. Por ejemplo:
+
+```django
+{% include 'components/stat_card.html' with title='Mascotas registradas' value='—' value_label='Sin información' only %}
+```
+
+`stat_card.html` recibe `title`, `value` y una etiqueta accesible opcional
+`value_label`. El menú recibe `active_page` desde el layout. El contenido
+específico de cada pantalla permanece en su plantilla, sin componentes para
+elementos que todavía no se reutilizan. Esta organización no cambia las rutas
+ni incorpora autenticación, modelos o guardado.
 
 Se conserva `/api/health/` como comprobación del servicio y `/admin/` como
 panel administrativo de Django. Para crear un administrador:

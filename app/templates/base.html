@@ -10,30 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/branding.css' %}" />
     <link rel="icon" href="{% static 'branding/logo CAM.jpg.jpeg' %}" />
   </head>
-  <body class="cam-app">
-    <a class="visually-hidden-focusable" href="#main-content">Saltar al contenido</a>
-    <div class="cam-layout">
-      <aside class="cam-sidebar" id="sidebar">
-        <a href="{% url 'home' %}" class="cam-brand">
-          <img src="{% static 'branding/logo CAM.jpg.jpeg' %}" alt="Inversiones Mundo Agropecuario CAM" />
-        </a>
-        <p class="text-muted small px-3">MENÚ PRINCIPAL</p>
-        <nav aria-label="Navegación principal" class="cam-nav">
-          <a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>Dashboard</a>
-          <a href="{% url 'pet-register' %}" {% if request.resolver_match.url_name == 'pet-register' %}aria-current="page"{% endif %}>Registrar mascota</a>
-          <a href="{% url 'login' %}">Pantalla de login</a>
-        </nav>
-      </aside>
-      <div class="cam-main">
-        <header class="cam-header">
-          <span class="fw-bold">Mundo Agropecuario CAM</span>
-          <span class="cam-demo-label">Prototipo · Solo vistas</span>
-        </header>
-        <main id="main-content" class="cam-content">
-          {% block content %}{% endblock %}
-        </main>
-        <footer class="cam-footer">Inversiones Mundo Agropecuario CAM · Gestión de mascotas</footer>
-      </div>
-    </div>
+  <body class="{% block body_class %}{% endblock %}">
+    {% block body %}{% endblock %}
   </body>
 </html>

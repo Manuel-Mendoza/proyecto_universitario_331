@@ -1,0 +1,11 @@
+<aside class="cam-sidebar" id="sidebar">
+  <a href="{% url 'home' %}" class="cam-brand">
+    {% include 'components/brand.html' only %}
+  </a>
+  <p class="text-muted small px-3">MENÚ PRINCIPAL</p>
+  <nav aria-label="Navegación principal" class="cam-nav">
+    <a href="{% url 'home' %}" {% if active_page == 'home' %}aria-current="page"{% endif %}>Dashboard</a>
+    <a href="{% url 'pet-register' %}" {% if active_page == 'pet-register' %}aria-current="page"{% endif %}>Registrar mascota</a>
+    <a href="{% url 'login' %}">Iniciar sesión</a>
+  </nav>
+</aside>

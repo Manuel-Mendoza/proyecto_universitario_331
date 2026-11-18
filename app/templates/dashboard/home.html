@@ -1,0 +1,63 @@
+{% extends 'layouts/app.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+  <div class="mb-4">
+    <p class="text-primary fw-semibold mb-2">INICIO</p>
+    <h1 class="h2">Dashboard</h1>
+    <p class="text-muted">Resumen de mascotas, ventas e inventario de Mundo Agropecuario CAM.</p>
+  </div>
+  <section aria-labelledby="summary-title" class="mb-4">
+    <h2 id="summary-title" class="h4 mb-3">Resumen general</h2>
+    <div class="row g-3">
+      <div class="col-sm-6 col-xl-3">
+        {% include 'components/stat_card.html' with title='Mascotas registradas' value='—' value_label='Sin información' only %}
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        {% include 'components/stat_card.html' with title='Ventas del día' value='—' value_label='Sin información' only %}
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        {% include 'components/stat_card.html' with title='Productos con stock bajo' value='—' value_label='Sin información' only %}
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        {% include 'components/stat_card.html' with title='Medicamentos próximos a vencer' value='—' value_label='Sin información' only %}
+      </div>
+    </div>
+  </section>
+  <section class="card mb-4" aria-labelledby="inventory-title">
+    <div class="card-body">
+      <h2 id="inventory-title" class="h4">Alertas de inventario</h2>
+      <ul class="cam-alert-list">
+        <li><strong>Productos agotados</strong><span>Sin información</span></li>
+        <li><strong>Stock bajo</strong><span>Sin información</span></li>
+        <li><strong>Próximos vencimientos</strong><span>Sin información</span></li>
+        <li><strong>Lotes vencidos</strong><span>Sin información</span></li>
+      </ul>
+    </div>
+  </section>
+  <section class="card mb-4" aria-labelledby="recent-pets-title">
+    <div class="card-body">
+      <h2 id="recent-pets-title" class="h4">Últimas mascotas registradas</h2>
+      <div class="table-responsive">
+        <table class="table">
+          <caption class="visually-hidden">Mascotas registradas recientemente</caption>
+          <thead><tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Especie</th>
+            <th scope="col">Raza</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Propietario</th>
+            <th scope="col">Fecha de registro</th>
+          </tr></thead>
+          <tbody><tr><td colspan="6" class="cam-empty-state">Sin información disponible.</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="card" aria-labelledby="quick-access-title">
+    <div class="card-body">
+      <h2 id="quick-access-title" class="h4">Acceso rápido</h2>
+      <a class="btn btn-primary" href="{% url 'pet-register' %}">Registrar mascota</a>
+    </div>
+  </section>
+{% endblock %}
