@@ -49,7 +49,8 @@ class HomeTests(SimpleTestCase):
         self.assertContains(response, 'Dashboard | Mundo Agropecuario CAM')
         self.assertContains(response, '/static/staradmin/css/style.css')
         self.assertContains(response, 'id="sidebar"')
-        self.assertContains(response, '<canvas')
+        self.assertContains(response, f'href="{reverse("pet-register")}"')
+        self.assertNotContains(response, '<canvas')
         self.assertNotContains(response, 'href="pages/')
         self.assertNotContains(response, 'href="index.html"')
 
@@ -74,7 +75,7 @@ class HomeTests(SimpleTestCase):
 
 class BrandingTests(SimpleTestCase):
     def test_pages_share_cam_identity(self):
-        for route in ('home', 'login'):
+        for route in ('home', 'login', 'pet-register'):
             with self.subTest(route=route):
                 response = self.client.get(reverse(route))
                 self.assertContains(response, static('branding/logo CAM.jpg.jpeg'))
@@ -87,3 +88,32 @@ class BrandingTests(SimpleTestCase):
                     html.index(static('staradmin/css/style.css')),
                     html.index(static('css/branding.css')),
                 )
+
+
+class PetRegisterTests(SimpleTestCase):
+    def test_registration_renders_all_animal_fields(self):
+        response = self.client.get(reverse('pet-register'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'pet_register.html')
+        self.assertTemplateUsed(response, 'base.html')
+        for field in ('id_animal', 'id_clientes', 'id_especie', 'id_raza',
+                      'nombre_a', 'fecha_nacimiento', 'sexo', 'peso_inicial',
+                      'color', 'observaciones'):
+            with self.subTest(field=field):
+                self.assertContains(response, f'id="{field}"')
+        self.assertContains(response, 'los datos no se guardan')
+        self.assertContains(response, 'type="button" disabled>Guardar mascota')
+        self.assertContains(response, f'href="{reverse("home")}"')
+
+    def test_registration_does_not_save_data(self):
+        response = self.client.post(reverse('pet-register'), {'nombre_a': 'Luna'})
+        self.assertEqual(response.status_code, 405)
+
+    def test_registration_resources_are_available(self):
+        response = self.client.get(reverse('pet-register'))
+        resources = re.findall(r'(?:src|href)="/static/([^"?]+)', response.content.decode())
+        self.assertTrue(resources)
+        for resource in resources:
+            with self.subTest(resource=resource):
+                self.assertIsNotNone(finders.find(unquote(resource)))

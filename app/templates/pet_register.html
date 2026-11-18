@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}Registrar mascota{% endblock %}
+{% block content %}
+  <p class="text-primary fw-semibold mb-2">MASCOTAS</p>
+  <h1 class="h2">Registrar mascota</h1>
+  <p class="text-muted mb-4">Completa la información básica del animal.</p>
+  <section class="card">
+    <div class="card-body">
+      <h2 class="h4 mb-3">Datos de la mascota</h2>
+      <p id="pet-notice" class="cam-notice">Formulario de demostración: los datos no se guardan. Las opciones de cliente, especie y raza son de ejemplo.</p>
+      <form method="post" onsubmit="return false;" aria-describedby="pet-notice">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <label for="id_animal" class="form-label">Identificador del animal</label>
+            <input id="id_animal" class="form-control" type="text" placeholder="Se asignará automáticamente" disabled />
+          </div>
+          <div class="col-md-6">
+            <label for="id_clientes" class="form-label">Cliente / propietario</label>
+            <select id="id_clientes" name="id_clientes" class="form-select">
+              <option value="">Selecciona un cliente</option>
+              <option value="demo-cliente">Cliente de ejemplo (demostración)</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <label for="nombre_a" class="form-label">Nombre de la mascota</label>
+            <input id="nombre_a" name="nombre_a" class="form-control" type="text" placeholder="Ej.: Luna" />
+          </div>
+          <div class="col-md-6">
+            <label for="id_especie" class="form-label">Especie</label>
+            <select id="id_especie" name="id_especie" class="form-select">
+              <option value="">Selecciona una especie</option>
+              <option value="demo-canino">Canino (ejemplo)</option>
+              <option value="demo-felino">Felino (ejemplo)</option>
+              <option value="demo-otro">Otra (ejemplo)</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="id_raza" class="form-label">Raza</label>
+            <select id="id_raza" name="id_raza" class="form-select" aria-describedby="breed-help">
+              <option value="">Selecciona una raza</option>
+              <option value="demo-mestizo">Mestizo / sin raza definida (ejemplo)</option>
+            </select>
+            <p id="breed-help" class="text-muted small mt-2 mb-0">El catálogo de razas se conectará más adelante.</p>
+          </div>
+          <div class="col-md-6">
+            <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
+            <input id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" type="date" />
+          </div>
+          <div class="col-md-6">
+            <label for="sexo" class="form-label">Sexo</label>
+            <select id="sexo" name="sexo" class="form-select">
+              <option value="">Selecciona el sexo</option>
+              <option value="macho">Macho</option>
+              <option value="hembra">Hembra</option>
+              <option value="desconocido">Desconocido</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="peso_inicial" class="form-label">Peso inicial (kg)</label>
+            <input id="peso_inicial" name="peso_inicial" class="form-control" type="number" min="0.01" step="0.01" placeholder="Ej.: 4,50" />
+          </div>
+          <div class="col-md-6">
+            <label for="color" class="form-label">Color</label>
+            <input id="color" name="color" class="form-control" type="text" placeholder="Ej.: Blanco y marrón" />
+          </div>
+          <div class="col-12">
+            <label for="observaciones" class="form-label">Observaciones</label>
+            <textarea id="observaciones" name="observaciones" class="form-control" rows="4" placeholder="Características o información adicional de la mascota"></textarea>
+          </div>
+        </div>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <button class="btn btn-primary" type="button" disabled>Guardar mascota</button>
+          <button class="btn btn-outline-primary" type="reset">Limpiar campos</button>
+          <a class="btn btn-light" href="{% url 'home' %}">Volver al dashboard</a>
+        </div>
+      </form>
+    </div>
+  </section>
+{% endblock %}
