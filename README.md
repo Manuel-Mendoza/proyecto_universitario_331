@@ -60,6 +60,15 @@ dashboard, al login y al registro mediante `app/static/css/branding.css`, cargad
 de los estilos de Star Admin sin modificar los archivos del proveedor. La
 paleta compartida utiliza verde `#73BF36`, verde oscuro `#3B7324` (para mejorar
 el contraste con blanco), marrón carbón `#3E3733` y blanco `#FFFFFF`.
+Todos los colores propios se definen en el `:root` de `branding.css` por su
+función: `--primary`, `--secondary`, `--texto`, `--texto-secundario`,
+`--texto-inverso`, `--fondo`, `--superficie` y `--borde`. También se reservan
+`--exito`, `--error`, `--advertencia` e `--informacion` para los estados.
+El hover, fondo suave, foco y sombra se derivan con `color-mix()` de los
+colores base; se pueden ajustar en el mismo bloque. Para cambiar el tema,
+edita ese `:root`: las reglas de botones, formularios, tarjetas, tablas y
+layouts consumen las variables, sin colores propios escritos fuera de él.
+El logo es una imagen y no cambia al modificar las variables CSS.
 El logo original está en `app/static/branding/logo CAM.jpg.jpeg`; se conserva
 su formato JPEG y su proporción. Los colores de estado mantienen sus distinciones originales.
 

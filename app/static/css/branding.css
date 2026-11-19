@@ -1,124 +1,186 @@
 /* Identidad compartida de Inversiones Mundo Agropecuario CAM.
    Cargar después de los estilos originales de Star Admin. */
 :root {
-  --cam-green: #73bf36;
-  --cam-green-dark: #3b7324;
-  --cam-green-hover: #305e1d;
-  --cam-charcoal: #3e3733;
-  --cam-white: #ffffff;
-  --cam-background: #f5f7f2;
-  --cam-green-soft: #eaf3e3;
-  --bs-primary: var(--cam-green-dark);
-  --bs-primary-rgb: 59, 115, 36;
-  --bs-link-color: var(--cam-green-dark);
-  --bs-link-hover-color: var(--cam-green-hover);
-  --bs-body-color: var(--cam-charcoal);
+  /* Colores base: editar aquí para cambiar el tema. */
+  --primary: #3b7324;
+  --secondary: #73bf36;
+  --texto: #3e3733;
+  --texto-secundario: #62685d;
+  --texto-inverso: #ffffff;
+  --fondo: #f5f7f2;
+  --superficie: #ffffff;
+  --borde: #e1e7dc;
+  --exito: #3b7324;
+  --error: #b42318;
+  --advertencia: #8a5700;
+  --informacion: #175b8f;
+
+  /* Variantes derivadas: siguen automáticamente al color base. */
+  --primary-hover: color-mix(in srgb, var(--primary), black 18%);
+  --fondo-suave: color-mix(in srgb, var(--primary) 10%, var(--superficie));
+  --foco: color-mix(in srgb, var(--primary) 20%, transparent);
+  --sombra: color-mix(in srgb, var(--texto) 8%, transparent);
+
+  /* Integración con Bootstrap y Star Admin. */
+  --bs-primary: var(--primary);
+  --bs-secondary: var(--secondary);
+  --bs-body-color: var(--texto);
+  --bs-body-bg: var(--fondo);
+  --bs-secondary-color: var(--texto-secundario);
+  --bs-border-color: var(--borde);
+  --bs-link-color: var(--primary);
+  --bs-link-hover-color: var(--primary-hover);
+  --bs-success: var(--exito);
+  --bs-danger: var(--error);
+  --bs-warning: var(--advertencia);
+  --bs-info: var(--informacion);
 }
 
 body {
-  color: var(--cam-charcoal);
+  color: var(--texto);
+  background: var(--fondo);
 }
 
 a {
-  color: var(--cam-green-dark);
+  color: var(--primary);
 }
 
 a:hover {
-  color: var(--cam-green-hover);
+  color: var(--primary-hover);
 }
 
-.content-wrapper,
-.sidebar,
-.navbar .navbar-brand-wrapper,
-.navbar .navbar-menu-wrapper,
-.footer {
-  background: var(--cam-background);
+.content-wrapper {
+  background: var(--fondo);
 }
 
 .btn-primary {
-  --bs-btn-bg: var(--cam-green-dark);
-  --bs-btn-border-color: var(--cam-green-dark);
-  --bs-btn-hover-bg: var(--cam-green-hover);
-  --bs-btn-hover-border-color: var(--cam-green-hover);
-  --bs-btn-active-bg: var(--cam-green-hover);
-  --bs-btn-active-border-color: var(--cam-green-hover);
-  --bs-btn-disabled-bg: var(--cam-green-dark);
-  --bs-btn-disabled-border-color: var(--cam-green-dark);
-  --bs-btn-focus-shadow-rgb: 59, 115, 36;
-  background-color: var(--cam-green-dark);
-  border-color: var(--cam-green-dark);
-  color: var(--cam-white);
+  --bs-btn-color: var(--texto-inverso);
+  --bs-btn-bg: var(--primary);
+  --bs-btn-border-color: var(--primary);
+  --bs-btn-hover-color: var(--texto-inverso);
+  --bs-btn-hover-bg: var(--primary-hover);
+  --bs-btn-hover-border-color: var(--primary-hover);
+  --bs-btn-active-color: var(--texto-inverso);
+  --bs-btn-active-bg: var(--primary-hover);
+  --bs-btn-active-border-color: var(--primary-hover);
+  --bs-btn-disabled-color: var(--texto-inverso);
+  --bs-btn-disabled-bg: var(--primary);
+  --bs-btn-disabled-border-color: var(--primary);
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--texto-inverso);
 }
 
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active {
-  background-color: var(--cam-green-hover);
-  border-color: var(--cam-green-hover);
-  color: var(--cam-white);
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: var(--texto-inverso);
 }
 
 .btn-outline-primary {
-  --bs-btn-color: var(--cam-green-dark);
-  --bs-btn-border-color: var(--cam-green-dark);
-  --bs-btn-hover-bg: var(--cam-green-dark);
-  --bs-btn-hover-border-color: var(--cam-green-dark);
-  --bs-btn-active-bg: var(--cam-green-hover);
-  --bs-btn-active-border-color: var(--cam-green-hover);
-  color: var(--cam-green-dark);
-  border-color: var(--cam-green-dark);
+  --bs-btn-color: var(--primary);
+  --bs-btn-border-color: var(--primary);
+  --bs-btn-hover-color: var(--texto-inverso);
+  --bs-btn-hover-bg: var(--primary);
+  --bs-btn-hover-border-color: var(--primary);
+  --bs-btn-active-color: var(--texto-inverso);
+  --bs-btn-active-bg: var(--primary-hover);
+  --bs-btn-active-border-color: var(--primary-hover);
+  --bs-btn-disabled-color: var(--primary);
+  --bs-btn-disabled-border-color: var(--primary);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 .btn-outline-primary:hover,
 .btn-outline-primary:active {
-  background: var(--cam-green-dark);
-  color: var(--cam-white);
+  background: var(--primary);
+  color: var(--texto-inverso);
 }
 
 .text-primary {
-  color: var(--cam-green-dark) !important;
+  color: var(--primary) !important;
 }
 
-.bg-primary,
-.badge-primary {
-  background-color: var(--cam-green-dark) !important;
-  color: var(--cam-white);
+.text-muted {
+  color: var(--texto-secundario) !important;
+}
+
+.card {
+  --bs-card-color: var(--texto);
+  --bs-card-bg: var(--superficie);
+  --bs-card-border-color: var(--borde);
+  color: var(--texto);
+  background-color: var(--superficie);
+  border-color: var(--borde);
+}
+
+.form-control,
+.form-select {
+  color: var(--texto);
+  background-color: var(--superficie);
+  border-color: var(--borde);
+}
+
+.form-control::placeholder {
+  color: var(--texto-secundario);
+  opacity: 1;
 }
 
 .form-control:focus,
 .form-select:focus {
-  border-color: var(--cam-green-dark);
-  box-shadow: 0 0 0 0.2rem rgb(59 115 36 / 20%);
+  color: var(--texto);
+  background-color: var(--superficie);
 }
 
-.sidebar .nav .nav-item.active > .nav-link,
-.sidebar .nav .nav-item > .nav-link:hover {
-  background: var(--cam-green-soft);
-  color: var(--cam-green-dark);
+.table {
+  --bs-table-color: var(--texto);
+  --bs-table-bg: var(--superficie);
+  --bs-table-border-color: var(--borde);
+  color: var(--texto);
+  border-color: var(--borde);
 }
 
-.sidebar .nav .nav-item.active > .nav-link i,
-.sidebar .nav .nav-item.active > .nav-link .menu-title,
-.sidebar .nav .nav-item.active > .nav-link .menu-arrow,
-.sidebar .nav.sub-menu .nav-item .nav-link.active,
-.home-tab .nav-tabs .nav-item .nav-link.active {
-  color: var(--cam-green-dark);
+.table th,
+.table td {
+  border-color: var(--borde);
 }
 
-.home-tab .nav-tabs .nav-item .nav-link.active {
-  border-bottom-color: var(--cam-green-dark);
+.btn-light {
+  --bs-btn-color: var(--texto);
+  --bs-btn-bg: var(--fondo);
+  --bs-btn-border-color: var(--borde);
+  --bs-btn-hover-color: var(--texto);
+  --bs-btn-hover-bg: var(--fondo-suave);
+  --bs-btn-hover-border-color: var(--borde);
+  --bs-btn-active-color: var(--texto);
+  --bs-btn-active-bg: var(--fondo-suave);
+  --bs-btn-active-border-color: var(--borde);
+  color: var(--texto);
+  background: var(--fondo);
+  border-color: var(--borde);
 }
 
-.navbar .navbar-brand-wrapper .navbar-brand img {
-  width: auto;
-  height: 72px;
-  max-width: 100%;
-  object-fit: contain;
+.btn-light:hover,
+.btn-light:focus,
+.btn-light:active {
+  color: var(--texto);
+  background: var(--fondo-suave);
+  border-color: var(--borde);
 }
 
-.navbar .navbar-brand-wrapper .brand-logo-mini img {
-  width: 44px;
-  height: auto;
+.btn-primary:focus-visible,
+.btn-outline-primary:focus-visible,
+.btn-light:focus-visible {
+  box-shadow: 0 0 0 0.2rem var(--foco);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem var(--foco);
 }
 
 .auth .brand-logo {
@@ -132,14 +194,19 @@ a:hover {
 }
 
 .auth .auth-form-light {
-  background: var(--cam-white);
-  border-top: 4px solid var(--cam-green);
+  background: var(--superficie);
+  border-top: 4px solid var(--secondary);
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgb(62 55 51 / 8%);
+  box-shadow: 0 8px 32px var(--sombra);
 }
 
-:focus-visible {
-  outline: 2px solid var(--cam-green-dark);
+:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary);
   outline-offset: 3px;
 }
 
@@ -150,9 +217,9 @@ a:hover {
 
 .cam-sidebar {
   flex: 0 0 240px;
-  background: var(--cam-white);
+  background: var(--superficie);
   padding: 24px 16px;
-  border-right: 1px solid #e1e7dc;
+  border-right: 1px solid var(--borde);
 }
 
 .cam-brand {
@@ -176,13 +243,13 @@ a:hover {
   padding: 14px 16px;
   border-radius: 8px;
   text-decoration: none;
-  color: var(--cam-charcoal);
+  color: var(--texto);
 }
 
 .cam-nav a:hover,
 .cam-nav a[aria-current="page"] {
-  background: var(--cam-green-soft);
-  color: var(--cam-green-dark);
+  background: var(--fondo-suave);
+  color: var(--primary);
 }
 
 .cam-nav a[aria-current="page"] {
@@ -192,7 +259,7 @@ a:hover {
 .cam-main {
   flex: 1;
   min-width: 0;
-  background: var(--cam-background);
+  background: var(--fondo);
 }
 
 .cam-header {
@@ -202,20 +269,8 @@ a:hover {
   align-items: center;
   gap: 12px;
   padding: 24px 32px;
-  background: var(--cam-white);
-  border-bottom: 1px solid #e1e7dc;
-}
-
-.cam-demo-label,
-.cam-notice {
-  background: var(--cam-green-soft);
-  color: var(--cam-green-dark);
-  border-radius: 8px;
-  padding: 12px;
-}
-
-.cam-demo-label {
-  font-size: 0.8rem;
+  background: var(--superficie);
+  border-bottom: 1px solid var(--borde);
 }
 
 .cam-content {
@@ -227,7 +282,7 @@ a:hover {
 .cam-footer {
   padding: 24px 32px;
   font-size: 0.8rem;
-  color: var(--cam-charcoal);
+  color: var(--texto);
 }
 
 .cam-app .form-select {
@@ -235,11 +290,11 @@ a:hover {
 }
 
 .cam-summary-card {
-  border-top: 3px solid var(--cam-green);
+  border-top: 3px solid var(--secondary);
 }
 
 .cam-indicator-status {
-  color: var(--cam-green-dark);
+  color: var(--primary);
   font-weight: 700;
   margin: 16px 0;
 }
@@ -255,7 +310,7 @@ a:hover {
 
 .cam-alert-list li {
   padding: 16px;
-  border: 1px solid #e1e7dc;
+  border: 1px solid var(--borde);
   border-radius: 8px;
 }
 
@@ -280,7 +335,7 @@ a:hover {
   .cam-sidebar {
     flex-basis: auto;
     border-right: 0;
-    border-bottom: 1px solid #e1e7dc;
+    border-bottom: 1px solid var(--borde);
     padding: 16px;
   }
 

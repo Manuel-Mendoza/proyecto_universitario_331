@@ -3,6 +3,7 @@ from django.templatetags.static import static
 from django.template.loader import render_to_string
 import re
 from urllib.parse import unquote
+from pathlib import Path
 
 from django.test import SimpleTestCase
 from django.urls import reverse
@@ -95,6 +96,18 @@ class HomeTests(SimpleTestCase):
 
 
 class BrandingTests(SimpleTestCase):
+    def test_theme_colors_are_centralized_in_root(self):
+        css = Path(finders.find('css/branding.css')).read_text()
+        root, rules = css.split('}', 1)
+        for variable in ('primary', 'secondary', 'texto', 'texto-secundario',
+                         'texto-inverso', 'fondo', 'superficie', 'borde',
+                         'exito', 'error', 'advertencia', 'informacion'):
+            with self.subTest(variable=variable):
+                self.assertIn(f'--{variable}:', root)
+        self.assertNotRegex(rules, r'#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\(')
+        self.assertNotIn('--cam-', css)
+        self.assertIn('var(--primary) 20%, transparent', root)
+
     def test_pages_share_cam_identity(self):
         for route in ('home', 'login', 'pet-register'):
             with self.subTest(route=route):
